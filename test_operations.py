@@ -17,15 +17,13 @@ class TestOperations:
                 assert calculate_discount(i, m) == 1 - (percentages[key] * bonus)
 
     def test_juice_offer_below_range(self):
-        with raises(ValueError):
+        with raises(Exception):
             calculate_discount((minimum - 5), True)
 
     def test_juice_offer_over_range(self):
-        with raises(ValueError):
+        with raises(Exception):
             calculate_discount((maximum + 5), False)
 
-
-#        assert calculate_discount((minimum - 5), True) == \
-#               ValueError(f"amount has to be greater than {minimum-1} and less or equal to {maximum}")
-#        assert calculate_discount((maximum + 5), False) == \
-#               ValueError(f"amount has to be greater than {minimum-1} and less or equal to {maximum}")
+    def test_juice_offer_false_input(self):
+        with raises(Exception):
+            calculate_discount("hallo", False)
